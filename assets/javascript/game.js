@@ -126,8 +126,6 @@ alert ("You lose!!");
 
 // Generate a random number for each crystal, between 1 and 12
 
-
-
 // There will be four crystals displayed as buttons on the page.
 
 // The player will be shown a random number at the start of the game.
