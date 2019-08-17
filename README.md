@@ -1,6 +1,9 @@
 # unit-4-game
 For UW Coding Bootcamp 04-Week Homework (Crystal Collector)
 
+## Technologies Used
+HTML, CSS, Javascript, Bootstrap, jQuery
+
 ## Installation
 Nothing special here.  Just check it out using your favorite web browser.
 

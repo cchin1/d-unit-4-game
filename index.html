@@ -5,13 +5,19 @@
         <meta charset="UTF-8">
         <title>Crystals Collector!</title>
        
+        <!-- Added code for viewport uniformity-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="/lib/jquery.plugin.js"></script>
-        <script src="/js/jquery.min.js"></script>
        
+        <!-- Added usage of fun Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        
+        <!-- Added referent for Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        <!-- Added link to CSS Reset Style-->
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        
+        <!-- Added link to CSS Style-->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
@@ -20,32 +26,17 @@
 <header>
 <h1>Crystals Collector!</h1>
 </header>
-<br>
 <h2>Have fun collecting various beautiful crystals!</h2>
-<br>
 <div class="container">
     <div class="jumbotron">
         <p>
-            You will be given a random number at the start of the game.
+            You will be given a random number at the start of the game. There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score. You win the game by matching your total score to the random number, you lose the game if your total score goes above the random number.
         </p>
-        <br>
         <p>
-            There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.
-        </p>
-        <br>
-        <p>
-            You win the game by matching your total score to the random number, you lose the game if your total score goes above the random number.
-        </p>
-        <br>
-        <p>
-            The value of each crystal is hidden from you until you click on it.
-        </p>
-        <br>
-        <p>
-            Each time when the game starts, the game will change the values of each crystal.
+            The value of each crystal is hidden from you until you click on it. Each time when the game starts, the game will change the values of each crystal.
         </p>
     </div>
-
+  
 <!-- empty divs for tallies-->
 
 <div id="game">
@@ -55,9 +46,31 @@
         <li class="list-group-item"><p id="randomTarget">Target Number: </p></li>
         <li class="list-group-item"><p id="score">Your Total Score Is: </p></li>
     </ul>
-<br>
 
-<!-- Setting up crystal images as buttons-->
+
+<!-- Hint from Joel, instructor 
+
+<div id="crystals">
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  $(document).ready(function() {
+      var NumberOptions = [10, 5];
+
+      for (var i = 0; i < numberOptions.length; i++) {
+          var imageCrystal = $("<div>");
+          imageCrystal.addClass("crystal-image");
+          imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+          $("#crystals").append(imageCrystal);
+      }
+  
+      $(".crystal-image").on("click", function() {
+          var crystalValue = $(this).attr("data-crystalvalue");
+          crystalValue = parseInt(crystalValue);
+          console.log("your crystal has a value of " = crystalValue);
+      });
+   })-->
+
+  <!-- Setting up crystal images-->
 
 <div class="panel panel-default" id= "panelStyle">
     <div class = "panel-body">
@@ -67,7 +80,6 @@
         <img src="assets/images/emerald.jpg" class=JewelStyle id= "four">
     </div>
 </div>
-
 
 <!-- Link to javascript game.js-->
 <script type="text/javascript" src="assets/javascript/game.js"></script>
