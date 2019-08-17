@@ -3,7 +3,11 @@ var targetNumber = "";
 var wins = 0;
 var losses = 0;
 var counter = 0;
-var images = ["./assets/images/ruby.jpg", "./assets/images/diamond.jpg", "./assets/images/opal.jpg", "./assets/images/emerald.jpg"];
+var gemVals = [0,0,0,0];
+var rubyIndex = 0;
+var diamondIndex = 1;
+var opalIndex = 2;
+var emeraldIndex = 3;
 
 // Functions
 
@@ -13,17 +17,26 @@ var images = ["./assets/images/ruby.jpg", "./assets/images/diamond.jpg", "./asse
     //sets up random number user is trying to match
     function randomTargetNumber () {
         targetNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+        console.log(targetNumber); 
     }
   
+    /**
+    * Returns a random integer between min (inclusive) and max (inclusive).
+    * The value is no lower than min (or the next integer greater than min
+    * if min isn't an integer) and no greater than max (or the next integer
+    * lower than max if max isn't an integer).
+    * Using Math.round() will give you a non-uniform distribution!
+    */
+    //function getRandomInt(min, max) {
+    //min = Math.ceil(min);
+    //max = Math.floor(max);
+    //return Math.floor(Math.random() * (max - min + 1)) + min;
+    //}
+
     //sets up random value for each of the crystals in the images array from above
     function resetCrystals () {
-        for (var i = 0; i < images.length; i++) {
-            var crystal = $("<img>");
-            crystal.addClass("crystal");
-            crystal.attr("src", images[i]);
-            crystal.attr("value", (Math.floor(Math.random() * 12) +1));
-            crystal.attr("height", "100");
-            $(".Jewel").append(crystal);
+        for (var i = 0; i < gemVals.length; i++) {
+            gemVals[i] = Math.floor(Math.random() * 12);
         }
     }
     //reset the html to reflect changes
@@ -48,16 +61,16 @@ var images = ["./assets/images/ruby.jpg", "./assets/images/diamond.jpg", "./asse
 
     // Setting up clicks on crystals (from the video)
     $("#ruby").click(function() {
-        alert("test");
+        alert(gemVals[rubyIndex]);
     });
     $("#diamond").click(function() {
-        alert("test");
+        alert(gemVals[diamondIndex]);
     });
     $("#opal").click(function() {
-        alert("test");
+        alert(gemVals[opalIndex]);
     });
     $("#emerald").click(function() {
-        alert("test");
+        alert(gemVals[emeraldIndex]);
     });
 
     // Click Functions
@@ -67,10 +80,12 @@ var images = ["./assets/images/ruby.jpg", "./assets/images/diamond.jpg", "./asse
             $(".score-number").html(counter);
             if (counter == targetNumber) {
                 wins++;
+                alert("you win");
                 totalReset();
             }
             else if (counter > targetNumber) {
                 losses++;
+                alert("you lose");
                 totalReset();
             };
         };
