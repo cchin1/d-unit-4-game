@@ -12,7 +12,9 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         
         <!-- Added referent for Bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         
         <!-- Added link to CSS Reset Style-->
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -27,6 +29,7 @@
 <h1>Crystals Collector!</h1>
 </header>
 <h2>Have fun collecting various beautiful crystals!</h2>
+<!--Creating jumbotron to contain the instructions-->
 <div class="container">
     <div class="jumbotron">
         <p>
@@ -37,15 +40,49 @@
         </p>
     </div>
   
-<!-- empty divs for tallies-->
+<!-- Creating a row to contain the emty divs for tallies-->
+<div class="row">
+    <div class="col-lg-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Target Number</h3>
+            </div>
+            <div class="panel-body">
+                <h3 class="text-center" id="randomTarget"><strong></h3>
+            </div>
+        </div>
+    <div class="col-lg-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Score</h3>
+            </div>
+            <div class="panel-body">
+                <h3 class="text-center" id="score"><strong></h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Wins</h3>
+            </div>
+            <div class="panel-body">
+                <h3 class="text-center" id="wins"><strong></h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Losses</h3>
+            </div>
+            <div class="panel-body">
+                <h3 class="text-center" id="losses"><strong></h3>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div id="game">
-	<ul class="list-group">
-		<li class="list-group-item"><p id="wins">Wins: </p></li>
-        <li class="list-group-item"><p id="losses">Losses: </p></li>
-        <li class="list-group-item"><p id="randomTarget">Target Number: </p></li>
-        <li class="list-group-item"><p id="score">Your Total Score Is: </p></li>
-    </ul>
 
 
 <!-- Hint from Joel, instructor 
@@ -71,15 +108,13 @@
    })-->
 
   <!-- Setting up crystal images-->
-
-<div class="panel panel-default" id= "panelStyle">
-    <div class = "panel-body">
-        <img src="assets/images/ruby.jpg" class=JewelStyle id= "one">
-        <img src="assets/images/diamond.jpg" class=JewelStyle id= "two">
-        <img src="assets/images/opal.jpg" class=JewelStyle id= "three">
-        <img src="assets/images/emerald.jpg" class=JewelStyle id= "four">
-    </div>
-</div>
+        <img src="assets/images/ruby.jpg" alt="" id="ruby">
+        <img src="assets/images/diamond.jpg" alt="" id="diamond">
+        <img src="assets/images/opal.jpg" alt="" id="opal">
+        <img src="assets/images/emerald.jpg" alt="" id="emerald">
+ 
+<!-- Incorporating jQuery link-->
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
 <!-- Link to javascript game.js-->
 <script type="text/javascript" src="assets/javascript/game.js"></script>
