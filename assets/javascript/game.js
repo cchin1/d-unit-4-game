@@ -12,10 +12,7 @@ var emeraldIndex = 3;
 // Functions
 
     //set the onload event
-    window.onload=
-        resetHTML();
-        totalReset ();
-    ;
+
 
     //reset the current score
     var counter = 0;
@@ -41,11 +38,14 @@ var emeraldIndex = 3;
 
     //sets up random value for each of the crystals declared as variables from above
     function resetCrystals () {
-        for (var i = 1; i < gemVals.length; i++) {
+        for (var i = 0; i < gemVals.length; i++) {
             gemVals[i] = Math.floor(Math.random() * 12);
             console.log(gemVals);
         }
     }
+
+    //need to attach each random value to the crystal variable in which it belongs
+
     //reset the html to reflect changes
     function resetHTML () {
         $("#randomTarget").html(targetNumber);
@@ -66,7 +66,8 @@ var emeraldIndex = 3;
         resetHTML ();
         resetCrystals ();
 
-    // Setting up clicks on crystals (from the video)
+    // Setting up clicks on crystals (from the video).  The alerts are for testing and not the real game.
+    // Need to setup function so that upon crystal click, the assigned number is added and stored in the count
     $("#ruby").click(function() {
         alert(gemVals[rubyIndex]);
     });
