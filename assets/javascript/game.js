@@ -11,6 +11,12 @@ var emeraldIndex = 3;
 
 // Functions
 
+    //set the onload event
+    window.onload=
+        resetHTML();
+        totalReset ();
+    ;
+
     //reset the current score
     var counter = 0;
 
@@ -33,19 +39,20 @@ var emeraldIndex = 3;
     //return Math.floor(Math.random() * (max - min + 1)) + min;
     //}
 
-    //sets up random value for each of the crystals in the images array from above
+    //sets up random value for each of the crystals declared as variables from above
     function resetCrystals () {
         for (var i = 0; i < gemVals.length; i++) {
             gemVals[i] = Math.floor(Math.random() * 12);
+            console.log(gemVals);
         }
     }
     //reset the html to reflect changes
     function resetHTML () {
-        $(".randomTarget").html(targetNumber);
-        $(".wins").html("<p>Wins: " + wins + "</p>");
-        $(".losses").html("<p>Losses: " + losses + "</p>");
-        $(".score").html("<p>Your Total Score is: " + score + "</p>");
-        $(".Jewel").empty();
+        $("#randomTarget").html(targetNumber);
+        $("#wins").html("<p>Wins: " + wins + "</p>");
+        $("#losses").html("<p>Losses: " + losses + "</p>");
+        $("#score").html("<p>Your Total Score is: " + score + "</p>");
+        $("#Jewel").empty();
     }
     function totalReset () {
         randomTargetNumber ();
@@ -53,7 +60,7 @@ var emeraldIndex = 3;
         resetHTML ();
         resetCrystals ();
     }
-    // Code to run otherwise known as Main Process
+    // Main Process
         // Initial Page Setup
         randomTargetNumber();
         resetHTML ();
