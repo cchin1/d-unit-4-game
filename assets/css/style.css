@@ -58,6 +58,13 @@ h2 {
     line-height: 75px;
 }
 
+h3 {
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: larger;
+  text-align: center;
+}
+
 p {
     font-family: 'Roboto', sans-serif;
     margin-left: 20px;
@@ -69,8 +76,9 @@ p {
 img {
     border: 1px solid #ddd;
     border-radius: 4px;
+    float: left;
     padding: 5px;
-    width: 150px;
-    height: 100px;
+    width: 25%;
+    height: 200px;
     
 }

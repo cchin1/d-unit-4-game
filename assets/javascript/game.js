@@ -41,7 +41,7 @@ var emeraldIndex = 3;
 
     //sets up random value for each of the crystals declared as variables from above
     function resetCrystals () {
-        for (var i = 0; i < gemVals.length; i++) {
+        for (var i = 1; i < gemVals.length; i++) {
             gemVals[i] = Math.floor(Math.random() * 12);
             console.log(gemVals);
         }
@@ -49,9 +49,9 @@ var emeraldIndex = 3;
     //reset the html to reflect changes
     function resetHTML () {
         $("#randomTarget").html(targetNumber);
-        $("#wins").html("<p>Wins: " + wins + "</p>");
-        $("#losses").html("<p>Losses: " + losses + "</p>");
-        $("#score").html("<p>Your Total Score is: " + score + "</p>");
+        $("#wins").html(wins);
+        $("#losses").html(losses);
+        $("#score").html(counter);
         $("#Jewel").empty();
     }
     function totalReset () {
