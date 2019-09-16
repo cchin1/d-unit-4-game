@@ -1,102 +1,128 @@
-// Declare necessary variables
-var targetNumber = "";
-var wins = 0;
-var losses = 0;
-var counter = 0;
-var gemVals = [0,0,0,0];
-var rubyIndex = 0;
-var diamondIndex = 1;
-var opalIndex = 2;
-var emeraldIndex = 3;
+// GLOBAL VARIABLES
 
-// Functions
-
-    //set the onload event
-
-
-    //reset the current score
-    var counter = 0;
-
-    //sets up random number user is trying to match
-    function randomTargetNumber () {
-        targetNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
-        console.log(targetNumber); 
+// Crystal variables
+var crystal = {
+    blue:
+    {
+        name: "Blue",
+        value: 0
+    },
+    green:
+    {
+        name: "Green",
+        value: 0
+    },
+    red:
+    {
+        name: "Red",
+        value: 0
+    },
+    yellow:
+    {
+        name: "Yellow",
+        value: 0
     }
-  
-    /**
-    * Returns a random integer between min (inclusive) and max (inclusive).
-    * The value is no lower than min (or the next integer greater than min
-    * if min isn't an integer) and no greater than max (or the next integer
-    * lower than max if max isn't an integer).
-    * Using Math.round() will give you a non-uniform distribution!
-    */
-    //function getRandomInt(min, max) {
-    //min = Math.ceil(min);
-    //max = Math.floor(max);
-    //return Math.floor(Math.random() * (max - min + 1)) + min;
-    //}
+};
 
-    //sets up random value for each of the crystals declared as variables from above
-    function resetCrystals () {
-        for (var i = 0; i < gemVals.length; i++) {
-            gemVals[i] = Math.floor(Math.random() * 12);
-            console.log(gemVals);
-        }
+// Scores (Current and Target)
+var currentScore = 0;
+var targetScore = 0;
+
+// Wins and Losses
+var winCount = 0;
+var lossCount = 0;
+
+// FUNCTIONS
+
+// Helper Function for getting random numbers
+var getRandom = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Starts the Game (and restarts the game)
+var startGame = function() {
+
+    // Reset current Score
+
+    currentScore = 0;
+
+    // Set a new Target Score between 19 and 120
+    targetScore = getRandom(19, 120);
+
+    // Set different values for each crystal between 1 and 12
+    crystal.blue.value = getRandom(1,12);
+    crystal.red.value = getRandom(1,12);
+    crystal.yellow.value = getRandom(1,12);
+    crystal.green.value = getRandom(1,12);
+
+    // Change html to reflect all of these changes
+
+    $("#yourScore").html(currentScore);
+    $("#targetScore").html(targetScore);
+
+}
+
+// Respond to clicks on the crystals
+var addValues = function(crystal) {
+
+    // Change currentScore
+    currentScore = currentScore + crystal.value;
+
+    // Change the HTML to reflect changes in current score
+    $("#yourScore").html(currentScore);
+
+    // Call the checkWin Function
+    checkWin();
+
+    // Testing Console
+    console.log("Your Score: " + currentScore);
+}
+
+// Check if user won or lost and reset the game
+var checkWin = function(){
+    // Check if currentScore is larger than targetScore
+    if(currentScore > targetScore) {
+        alert("Sorry you lost");
+        console.log("youlost");
+
+        // add to Loss Counter
+        lossCount++;
+
+        // Change loss count html
+        $("#lossCount").html(lossCount);
+
+        // Restart the game
+        startGame();
+    }
+    else if (currentScore == targetScore) {
+        alert("Great Job, you won");
+        console.log("you won");
+
+        // Add to Win Counter
+        winCount++;
+
+        // Change win count html
+        $("#winCount").html(winCount);
+
+        // Restart the game
+        startGame();
     }
 
-    //need to attach each random value to the crystal variable in which it belongs
+}
 
-    //reset the html to reflect changes
-    function resetHTML () {
-        $("#randomTarget").html(targetNumber);
-        $("#wins").html(wins);
-        $("#losses").html(losses);
-        $("#score").html(counter);
-        $("#Jewel").empty();
-    }
-    function totalReset () {
-        randomTargetNumber ();
-        counter = 0;
-        resetHTML ();
-        resetCrystals ();
-    }
-    // Main Process
-        // Initial Page Setup
-        randomTargetNumber();
-        resetHTML ();
-        resetCrystals ();
+// MAIN PROCESS
 
-    // Setting up clicks on crystals (from the video).  The alerts are for testing and not the real game.
-    // Need to setup function so that upon crystal click, the assigned number is added and stored in the count
-    $("#ruby").click(function() {
-        alert(gemVals[rubyIndex]);
-    });
-    $("#diamond").click(function() {
-        alert(gemVals[diamondIndex]);
-    });
-    $("#opal").click(function() {
-        alert(gemVals[opalIndex]);
-    });
-    $("#emerald").click(function() {
-        alert(gemVals[emeraldIndex]);
-    });
+startGame();
 
-    // Click Functions
-        function crystalClick () {
-            //attr returns the first value of selected html element 
-            counter += parseInt($(this).attr("value"));
-            $(".score-number").html(counter);
-            if (counter == targetNumber) {
-                wins++;
-                alert("you win");
-                totalReset();
-            }
-            else if (counter > targetNumber) {
-                losses++;
-                alert("you lose");
-                totalReset();
-            };
-        };
-        
-        //During the life of the game, account for every dynamic change by executing crystalClick function
-        $(document).on("click", ".crystal", crystalClick);
+$("#red").click(function() {
+    addValues(crystal.red);
+});
+$("#blue").click(function() {
+    addValues(crystal.blue);
+});
+$("#yellow").click(function() {
+    addValues(crystal.yellow);
+});
+$("#green").click(function() {
+    addValues(crystal.green);
+});
