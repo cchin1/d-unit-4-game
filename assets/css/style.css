@@ -37,7 +37,7 @@
 
 
 body {
-    background-color: lightblue;
+    background-color: mediumslateblue;
 }
 
 h1 {
@@ -52,10 +52,10 @@ h1 {
 h2 {
     color: black;
     font-family: 'Roboto', sans-serif;
-    font-size: larger;
+    font-size: medium;
     text-align: center;
     margin-left: 20px;
-    line-height: 75px;
+    line-height: 25px;
 }
 
 h3 {
