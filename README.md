@@ -1,5 +1,6 @@
 # unit-4-game
 For UW Coding Bootcamp 04-Week Homework (Crystal Collector)
+https://cchin1.github.io/unit-4-game/
 
 ## Technologies Used
 HTML, CSS, Javascript, Bootstrap, jQuery
